@@ -59,7 +59,6 @@ import pprint as pp
 
 
 # def check_all(matrix, z, y, x):
-    # WHAT ABOUT RECURSIVE CHECK ALL? that >is< reversible?
     # run all checks, combine string
     # target_int = matrix[z][y][x]
     # ans_string += check_right(target_int, matrix, z, y, x, 0)
@@ -96,10 +95,6 @@ def check_all(matrix):
                     ans_string = ""
                     ans_string = check_right(z,y,x,\
                                              matrix, z, y, x+1, 0)
-                    # if ans_string == None:
-                    #     return
-                    # else:
-                    matrix[z][y][x] = ans_string
                     # ans_string += check_down
                     # ans_string += check_forward
                     print("ans_string", ans_string)
@@ -123,32 +118,21 @@ def check_all(matrix):
 # 
 def check_right(origin_z, origin_y, origin_x, matrix, new_z, new_y, new_x, counter):
     # shouldnt need next, should be recursively incremented param
+    origin = matrix[origin_z][origin_y][origin_x]
+    target = matrix[new_z][new_y][new_x]
     # ans_string = ""
     try:
-        origin = matrix[origin_z][origin_y][origin_x]
-        target = matrix[new_z][new_y][new_x]
         if origin == target:
             # print(matrix[z][y][x], matrix[z][y][x+1])
             counter += 1
             target = ""
-            try:
-                check_right(origin_z, origin_y, origin_x, matrix, new_z, new_y, new_x+1, counter)
-            
-            except IndexError:
-                if counter == 0:
-                    print('origin', origin)
-                    return str(origin)
-
-                elif counter > 0:
-                    ans_string = str(origin)+"R"+str(counter)
-                    print("ans_string", ans_string)
-                    return ans_string
-
+            check_right(origin_z, origin_y, origin_x, matrix, new_z, new_y, new_x+1, counter)
         elif target != origin and counter > 0:
             ans_string = str(origin)+"R"+str(counter)
-            print("ans_string: ", ans_string)
+            print("ans_string", ans_string)
+            origin = ans_string
             try:
-                check_right(new_z,new_y,new_x+1,matrix,new_z,new_y,new_x+1,0)
+                check_right(new_z,new_y,new_x,matrix,new_z,new_y,new_x,0)
             except IndexError:
                 ans_string = str(origin)+"R"+str(counter)
                 return ans_string
@@ -156,22 +140,25 @@ def check_right(origin_z, origin_y, origin_x, matrix, new_z, new_y, new_x, count
             try:
                 check_right(origin_z, origin_y, origin_x+1, matrix, new_z, new_y, new_x+1, 0)
             except IndexError:
-                return str(origin)
-        else:
-            return str(origin)
-            
+                return origin
+
     # origin != target:
     except IndexError:
         if counter == 0:
+            print("counter == 0 and IndexError")
             return origin
 
         elif counter > 0:
+            print("counter = ",counter," and IndexError")
             ans_string = str(origin)+"R"+str(counter)
+            # ans_string = str(target_int)+"R"+str(counter)
             print("ans_string", ans_string)
             return ans_string
 
-        # else:
-        #     return
+            # keep incrementing counter until IndexError
+    else:
+            # if right ele is not same, return
+        return origin
 
 
 matrix = \

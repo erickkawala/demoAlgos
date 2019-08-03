@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import sys, getopt
+import sys
 
 
 if (len(sys.argv) != 2):

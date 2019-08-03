@@ -2,42 +2,43 @@ import pprint as pp
 
 
 
-def construct_submatrix_3d(matrix, include_frames, include_rows, include_columns):
+def construct_submatrix_3d(matrix, include_frames, include_ary, include_columns):
     ans_ary = []
 
     for frame in matrix:
-        if check_include_frames(include_frames, matrix.index(frame)):
+        if check_include_ary(include_frames, matrix.index(frame)):
             frame_t = []
 
             for row in frame:
-                if check_include_rows(include_rows, frame.index(row)):
+                if check_include_ary(include_ary, frame.index(row)):
                     row_t = []
 
                     for col in row:
-                        if check_include_columns(include_columns, row.index(col)):
+                        if check_include_ary(include_columns, row.index(col)):
                             row_t.append(col)
 
                     frame_t.append(row_t)
 
             ans_ary.append(frame_t)
 
+# could all be rewritten arbitrarily: if target_index exists in include_ary
+#       return true
+# def check_include_frames(include_frames, target_frame_index):
+#     for frame in include_frames:
+#         if frame == target_frame_index:
+#             return True
 
-def check_include_frames(include_frames, target_frame_index):
-    for frame in include_frames:
-        if frame == target_frame_index:
-            return True
 
-
-def check_include_rows(include_rows, target_row_index):
-    for row in include_rows:
+def check_include_ary(include_ary, target_row_index):
+    for row in include_ary:
         if row == target_row_index:
             return True
 
 
-def check_include_columns(include_columns, target_column_index):
-    for column in include_columns:
-        if column == target_column_index:
-            return True
+# def check_include_columns(include_columns, target_column_index):
+#     for column in include_columns:
+#         if column == target_column_index:
+#             return True
 
 
 include_rows1 = [0, 1]
