@@ -19,7 +19,7 @@ time.ex prints out the days of the year with leap years, used to see user's birt
 
 size_of.py is a command line script that takes one object parameter.
 
-simplex_algo.ex is a maximization or minimization of an objective function; the linear programming simplex solution.
+simplex_algo.ex is a maximization or minimization of an objective function-- the linear programming simplex solution.
 (currently incomplete)
 
 
