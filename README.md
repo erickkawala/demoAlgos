@@ -1,9 +1,13 @@
+##Python Algos
 Compression_algo_pseudo contains the pseudocode for compression_algo.py. Currently not functional.
 
 construct_submatrix_2D, 3D are benchmarked:
 	2D: 10M executions in 2.1273080479999997 seconds 
 	3D: 10M executions in 7.822783686999999 seconds
 
+size_of.py is a command line script that takes one object parameter.
+
+##Elixir Phoenix Seed Scripts
 
 See www.github.com/erickkawa/phx-hello for project with schemas to test seed scripts.
 
@@ -16,10 +20,8 @@ seed_all_uneven_regions_time.ex seeds user schema fields for regions unevenly an
 
 time.ex prints out the days of the year with leap years, used to see user's birthday year, month, and day, starting at 1900.  Can be changed to work with more recent years.
 
-
-size_of.py is a command line script that takes one object parameter.
-
+##misc
 simplex_algo.ex is a maximization or minimization of an objective function-- the linear programming simplex solution.
-(currently incomplete)
+(currently incomplete, may do python)
 
 
