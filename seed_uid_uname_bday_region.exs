@@ -254,8 +254,6 @@ defmodule Insert do
   end
 end
 
-#call entire loop, 
+# call entire loop, 
 #                n n_stop yrs mo days
-# 
 Insert.month_Jan(1,7835801,1900, 1, 1)
-

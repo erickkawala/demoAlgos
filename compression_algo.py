@@ -1,5 +1,6 @@
 import pprint as pp
 
+
 def check_all(matrix):
 
     for frame in matrix:
@@ -15,7 +16,7 @@ def check_all(matrix):
                     return
                 else:
                     ans_string = ""
-                    ans_string = check_right(z,y,x,\
+                    ans_string = check_right(z, y, x,
                                              matrix, z, y, x+1, 0)
                     matrix[z][y][x] = ans_string
                     # ans_string += check_down
@@ -33,8 +34,9 @@ def check_right(origin_z, origin_y, origin_x, matrix, new_z, new_y, new_x, count
             counter += 1
             target = ""
             try:
-                check_right(origin_z, origin_y, origin_x, matrix, new_z, new_y, new_x+1, counter)
-            
+                check_right(origin_z, origin_y, origin_x, matrix,
+                            new_z, new_y, new_x+1, counter)
+
             except IndexError:
                 if counter == 0:
                     print('origin', origin)
@@ -49,11 +51,12 @@ def check_right(origin_z, origin_y, origin_x, matrix, new_z, new_y, new_x, count
             ans_string = str(origin)+"R"+str(counter)
             print("ans_string: ", ans_string)
             try:
-                check_right(new_z,new_y,new_x+1,matrix,new_z,new_y,new_x+1,0)
+                check_right(new_z, new_y, new_x+1, matrix,
+                            new_z, new_y, new_x+1, 0)
             except IndexError:
                 ans_string = str(origin)+"R"+str(counter)
                 return ans_string
-        
+
         elif target != origin and counter == 0:
             return origin
         # we want to let the calling loop call check right itself
@@ -63,7 +66,7 @@ def check_right(origin_z, origin_y, origin_x, matrix, new_z, new_y, new_x, count
         #         return str(origin)
         else:
             return str(origin)
-            
+
     # origin != target:
     except IndexError:
         if counter == 0:
@@ -76,7 +79,7 @@ def check_right(origin_z, origin_y, origin_x, matrix, new_z, new_y, new_x, count
 
 
 matrix = \
-    [   
+    [
         [1, 1, 1, 1, 1],  # 1R4 => ["1R4D3F2",0,0,0,0]
         [1, 1, 1, 1],  # 1R3 => [0,0,0,0]
         [1, 1, 1]  # 1R2 => [0,0,0]
@@ -98,4 +101,3 @@ pp.pprint(matrix)
 print("\n compressing \n")
 check_all(matrix)
 pp.pprint(matrix)
-
