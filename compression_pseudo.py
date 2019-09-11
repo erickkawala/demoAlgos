@@ -34,20 +34,33 @@
 
 import pprint as pp
 
-basically, we have a 3D array
-ideally, we start in the middle of rows, frames, columns, then:
+# basically, we have a 3D array
+# ideally, we start in the middle of rows, frames, columns, then:
 
- check_right,     append matches ans_string to origin, change non origin matches to ""
- check_left,     append matches ans_string to origin   ""
- check_up,       append matches ans_string to origin   ""
- check_down,     append matches ans_string to origin   ""
- check_forward,  append matches ans_string to origin   ""
- check_backward, append matches ans_string to origin   ""
+#  check_right,     append matches ans_string to origin, change non origin matches to ""
+#  check_left,     append matches ans_string to origin   ""
+#  check_up,       append matches ans_string to origin   ""
+#  check_down,     append matches ans_string to origin   ""
+#  check_forward,  append matches ans_string to origin   ""
+#  check_backward, append matches ans_string to origin   ""
 
- after doing that in the middle, then start back at the beginning,
+#  after doing that in the middle, then start back at the beginning,
 
- check right x+, down y+, forward z+
- and iterate through whole matrix
+#  check right x+, down y+, forward z+
+#  and iterate through whole matrix
+
+#  if an origin is "", skip it
+#  if a target is "" check_right try: origin=z,y,x+1 target=z,y,x+2
+
+#  keeping track of the number of rows in a frame as array
+#  for variable row lengths in frame
+ 
+#  and track frames in matrix to handle last IndexError
+#  which should be check_right, check_down, and check_forward,
+#  so I'm guessing it's easier to track frames and rows and stop
+#  then try to find the right place to handle the last IndexError
+
+
 
 
 # x,y,z are positions in the 3D array

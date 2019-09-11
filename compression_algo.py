@@ -7,6 +7,7 @@ def get_y_z_length(matrix):
     rows_len = 0
     frames_len = 0
     for frame in matrix:
+        frames_len += 1
         for row in frame:
             rows_len += 1
 
