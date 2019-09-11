@@ -7,7 +7,6 @@ def get_y_z_length(matrix):
     rows_len = 0
     frames_len = 0
     for frame in matrix:
-        frames_len += 1
         for row in frame:
             rows_len += 1
 
@@ -17,6 +16,9 @@ def get_y_z_length(matrix):
 # go to the next frame, and last frame IndexError can be handled the same way
 #  ary rows_len [0] represents the number of rows in the first frame
 #  int frames_len represents number of frames to iterate, indices frames_len-1
+# at the last frame, last row, check_right should handle IndexError
+# but actually, we need to know when to stop... so probably need z_counter
+# or see what happens with an unhandled IndexError for check_right target OOB
 
 def check_all(matrix):
 
@@ -32,8 +34,8 @@ def check_all(matrix):
                 else:
                     # when check_right returns, next ary element is pushed through
                     # matrix[z][y][x], so don't have to increment from check_right
-                    #           origin          target    matchctr  y_ctr z_ctr
-                    check_right(z, y, x, matrix, z, y, x+1, 0,      0,    0)
+                    #           origin          target    matchctr  y_ctr
+                    check_right(z, y, x, matrix, z, y, x+1, 0,      0)
                     # ans_string = ""
                                     # origin z, y, x, next is z, y, x+1
                                     # if match, recurse calls next z, y, x+1
@@ -44,7 +46,7 @@ def check_all(matrix):
                     # print("ans_string", ans_string)
 
 def check_right(origin_z, origin_y, origin_x, matrix, target_z, target_y, target_x, 
-                match_counter, y_counter, z_counter):
+                match_counter, y_counter):
     try:
         origin = matrix[origin_z][origin_y][origin_x]
         target = matrix[target_z][target_y][target_x]
@@ -55,13 +57,13 @@ def check_right(origin_z, origin_y, origin_x, matrix, target_z, target_y, target
             print("ans_string: ", ans_string)
             try:
                 check_right(origin_z, origin_y, origin_x, matrix,
-                            target_z, target_y, target_x+1, 0, y_counter, z_counter)
+                            target_z, target_y, target_x+1, 0, y_counter)
 
             # first row index error, increment y_counter
             except IndexError:
                 if match_counter == 0:
                     check_right(origin_z, origin_y+1, origin_x, matrix,
-                                target_z, target_y+1, target_x+1, 0, y_counter+1, z_counter)
+                                target_z, target_y+1, target_x+1, 0, y_counter+1)
 
                 elif match_counter > 0:
                     ans_string = str(origin)+"R"+str(match_counter)
@@ -76,30 +78,31 @@ def check_right(origin_z, origin_y, origin_x, matrix, target_z, target_y, target
                 
                 # if y_counter = rows_len:
                 # go to next frame by incrementing origin_z, target_z
-                # increment z_counter
+                # incremen # redundant, last IndexError handles
 
                 try:
                     origin = matrix[target_z, target_y, target_x+1]
 
                     check_right(target_z, target_y, target_x, matrix,
-                                target_z, target_y, target_x+1, 0, y_counter+1, z_counter)
+                                target_z, target_y, target_x+1, 0, y_counter+1)
                 
                 except IndexError:
                     # go to next row
                     check_right(origin_z, origin_y+1, origin_x, matrix,
-                                target_z, target_y+1, target_x+1, 0, y_counter+1, z_counter)
+                                target_z, target_y+1, target_x+1, 0, y_counter+1)
 
             elif match_counter > 0:
                 ans_string = str(origin)+"R"+str(match_counter)
                 print("ans_string: ", ans_string)
                 origin = ans_string
 
-                # try:
-                #     check_right(target_z, target_y, target_x, matrix,
-                #                 target_z, target_y, target_x+1, 0)
-                # except IndexError:
-                #     ans_string = str(origin)+"R"+str(match_counter)
-                #     return ans_string
+                try:
+                    check_right(target_z, target_y, target_x, matrix,
+                                target_z, target_y, target_x+1, 0, y_counter)
+                                                            #  ^^ match counter
+                except IndexError:
+                    ans_string = str(origin)+"R"+str(match_counter)
+                    return ans_string
 
         elif target != origin and match_counter == 0:
             return
