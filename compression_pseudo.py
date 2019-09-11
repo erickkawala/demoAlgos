@@ -31,31 +31,35 @@
 ################################################
 
 
+
 import pprint as pp
 
+basically, we have a 3D array
+ideally, we start in the middle of rows, frames, columns, then:
 
-# def compress(matrix):
-#     for frame in matrix:
-#         for row in frame:
-#             for col in row:
-#                 z = matrix.index(frame)
-#                 y = frame.index(row)
-#                 x = row.index(col)
-#                 ans_string = ""
-#                 # check_all(matrix, z, y, x)
-#                 target = matrix[z][y][x]
-#                 # right_string = check_right(target, matrix, z, y, x, 0)
-#                 print(right_string)
-#                 # ans_string += right_string
-#                 str(matrix[z][y][x])
-#                 matrix[z][y][x] = right_string
+ check_right,     append matches ans_string to origin, change non origin matches to ""
+ check_left,     append matches ans_string to origin   ""
+ check_up,       append matches ans_string to origin   ""
+ check_down,     append matches ans_string to origin   ""
+ check_forward,  append matches ans_string to origin   ""
+ check_backward, append matches ans_string to origin   ""
+
+ after doing that in the middle, then start back at the beginning,
+
+ check right x+, down y+, forward z+
+ and iterate through whole matrix
 
 
 # x,y,z are positions in the 3D array
 # target is the int value at the current position
 # iterate frames, rows, cols
-# target_zyx is int 1-9 at current matrix position
+# target_zyx is int 1-9 at current matrix position as a string
+# could be any number
 # also the symbol we want to compress, L/R,U/D,B/F
+
+# need to keep track of the number of rows iterated to know when to
+#   go to the next frame, the last frame as an index error is handled
+# by check_right
 
 
 # def check_all(matrix, z, y, x):
