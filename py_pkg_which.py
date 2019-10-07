@@ -5,11 +5,16 @@
 
 import sys
 
-a = sys.argv
-
-# no argv yet? for multiple args
+arg = sys.argv
 
 def func(arg):
+    # try:
+    #     syntax_str = "import %s", sys.argv[1]
+    #     exec(syntax_str)
+
+    # except SyntaxError:
+    #     print("usage: python py_which.py <python_module>")
+
     if (len(sys.argv) != 2):
         print("usage: python py_which.py <python_module>")
         return
