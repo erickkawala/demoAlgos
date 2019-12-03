@@ -1,5 +1,4 @@
 ## Python Algos
-Compression_algo_pseudo contains the pseudocode for compression_algo.py. Currently not functional.
 
 construct_submatrix_2D, 3D are benchmarked:
 	2D: 10M executions in 2.1273080479999997 seconds
