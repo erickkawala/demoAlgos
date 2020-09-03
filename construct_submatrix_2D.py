@@ -1,5 +1,6 @@
 import pprint as pp
-import timeit
+
+
 def construct_submatrix_inclusion(matrix, include_rows, include_columns):
     ans_ary = []
 
@@ -23,12 +24,6 @@ def check_include_ary(include_rows, target_row_index):
                 return True
 
 
-# def check_include_columns(include_columns, target_column_index):
-#     for column in include_columns:
-#         if column == target_column_index:
-#             return True
-
-
 include_rows1 = [1]
 include_columns1 = [1]
 
@@ -42,14 +37,3 @@ matrix1 = \
 pp.pprint(matrix1)
 
 construct_submatrix_inclusion(matrix1, include_rows1, include_columns1)
-
-### Uncomment the below code for benchmarking ###
-
-# setup = "from __main__ import construct_submatrix_inclusion,\
-#     matrix1,include_rows1,include_columns1"
-# time = timeit.timeit("construct_submatrix_inclusion(matrix1,\
-# include_rows1, include_columns1)", setup=setup)
-
-# average = time/1000000
-# print("\n10M executions in "+str(time)+" seconds \n")
-# print("average: "+str(average)+" seconds \n")
