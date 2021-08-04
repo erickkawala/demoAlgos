@@ -44,27 +44,34 @@ def check_all(matrix):
                     # check_right(z, y, x+1, matrix, z, y, x+2, 0)
                     # check_down, check forward
                     #   # ideally, start in the middle, check L,R,Forward,Back,Up,Down
-                    # matrix[z][y][x] = ans_string
-                    # ans_string += check_down
-                    # ans_string += check_forward
+                    #   # update 2021: it would make more sense to start at 0,0,0 and look for matches
+                    #                   but if there were more symbols, it would make sense to start in middle
+                                                                        # and check Up Down Left Right Forward Back
+                                        # then most frequent symbols the compressed bit fields with index key map+compressed data
+                                        # in any language, C/c++, smallest element is replacing the symbol from that data
+                    # matrix[z][y][x] = ans_string, say: 1
+                    # ans_string += check_down :1, append 1D
+                    # ans_string += check_forward, 1, append 1F
                     # print("ans_string", ans_string)
 
 def check_right(origin_z, origin_y, origin_x, matrix, target_z, target_y, target_x, 
                 match_ctr, y_ctr, z_ctr):
-    print("check_right!!!!!")
+    print("check_right function called.")
     try:
         origin = matrix[origin_z][origin_y][origin_x]
         target = matrix[target_z][target_y][target_x]
         if target == origin:
             match_ctr += 1
             target = ""
+            # turn ary int to str
             ans_string = str(origin)+"R"+str(match_ctr)
             print("ans_string: ", ans_string)
             try:
                 check_right(origin_z, origin_y, origin_x, matrix,
                             target_z, target_y, target_x+1, 0, y_ctr, z_ctr)
 
-            # first row index error, increment y_ctr
+            # first row index error, increment y_ctr (row) to backfill after no more target==origin
+            #                         z_ctr (frame) will help backfill compressed eles to "", see bottom
             except IndexError:
                 print("target == origin, except IndexError, match_ctr: ", match_ctr)
                 if match_ctr == 0:
@@ -154,7 +161,7 @@ def count_rows(matrix):
 
 matrix = \
     [
-        [1, 1, 1, 1, 1],  # 1R4 => ["1R4D3F2",0,0,0,0]
+        [1, 1, 1, 1, 1],  # 1R4 => ["1R4D3F2","","","",""]
         [1, 1, 1, 1],  # 1R3 => [0,0,0,0]
         [1, 1, 1]  # 1R2 => [0,0,0]
     ],\
