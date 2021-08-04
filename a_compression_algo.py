@@ -53,7 +53,7 @@ def check_all(): # matrix param removed
                 #     check_right(z, y, x, matrix, z, y, x+1, 0,      0,    0)
                 #     # ans_string = ""
                 #                     # origin z, y, x, next is z, y, x+1
-                #                     # if match, recurse calls next z, y, x+1
+                #                     # if match, recurse calls next z, y, x+1 which is now x+2 where x is target
                 #     # check_right(z, y, x+1, matrix, z, y, x+2, 0)
                 #     # check_down, check forward
                 #     #   # ideally, start in the middle, check L,R,Forward,Back,Up,Down
