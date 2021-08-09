@@ -1,3 +1,9 @@
+# this is some recursive try to check_right recursively and preserve with globals and idk
+
+p_origin = [0]
+p_target = [0]
+ans_string = "
+
 def compress(matrix):
     for frame in matrix:
         # check forward, back here
