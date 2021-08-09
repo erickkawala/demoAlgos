@@ -14,9 +14,11 @@ import pprint as pp
 # THIS DOES NOT WORK ON BASE CONDA ENV!
 
 def check_all(): # matrix param removed
+    
+    #chosen encoding is inclusive here? otherwise would be 1R3D2F2... which might compress more
     matrix = \
     [
-        [1, 1, 1, 1, 1],  # 1R4 => ["1R4D3F2",0,0,0,0]
+        [1, 1, 1, 1, 1],  # 1R4 => ["1R4D3F3",0,0,0,0]
         [1, 1, 1, 1],  # 1R3 => ["1R3",0,0,0]
         [1, 1, 1]  # 1R2 => ["1R",0,0]
     ],\
