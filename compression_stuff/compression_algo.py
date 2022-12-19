@@ -137,6 +137,8 @@ def check_right(origin_z, origin_y, origin_x, matrix, target_z, target_y, target
             ans_string = str(origin)+"R"+str(match_ctr)
             print("ans_string", ans_string)
             return ans_string
+        else:
+            print("main try/catch error, review control flow")
 
 # counting rows per frame, storing as indices of array
 # in a paginated array of symbols to be comrpessed
