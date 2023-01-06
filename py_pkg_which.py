@@ -13,10 +13,10 @@ def func(arg):
     #     exec(syntax_str)
 
     # except SyntaxError:
-    #     print("usage: python py_which.py <python_module>")
+    #     print("usage: python py_pkg_which.py <python_module>")
 
     if (len(sys.argv) != 2):
-        print("usage: python py_which.py <python_module>")
+        print("usage: python py_pkg_which.py <python_module>")
         return
     else:
         cmd1 = "import %s" % (sys.argv[1])
