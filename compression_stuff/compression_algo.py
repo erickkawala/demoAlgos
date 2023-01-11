@@ -141,6 +141,7 @@ def check_right(origin_z, origin_y, origin_x, matrix, target_z, target_y, target
             print("main try/catch error, review control flow")
     else:
         print("end of control flow")
+        return
 # counting rows per frame, storing as indices of array
 # in a paginated array of symbols to be comrpessed
 def count_frames(matrix):
