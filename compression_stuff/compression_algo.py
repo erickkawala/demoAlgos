@@ -33,7 +33,7 @@ def check_all(matrix):
                 if matrix[z][y][x] == "":
                     pass
                 else:
-                    print("for loop else: not empty ary ele",matrix[y][y][x])
+                    print("for loop else: not empty ary ele",matrix[z][y][x])
                     # when check_right returns, next ary element is pushed through
                     # matrix[z][y][x], so don't have to increment from check_right
                     #           origin          target    matchctr  y_ctr z_ctr
