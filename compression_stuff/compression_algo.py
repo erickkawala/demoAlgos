@@ -28,8 +28,8 @@ def check_all(matrix):
                 z = matrix.index(frame)
                 y = frame.index(row)
                 x = row.index(col)
-                print("matrix[y][y][x]")
-                print(matrix[y][y][x])
+                print("matrix[z][y][x]")
+                print(matrix[z][y][x])
                 if matrix[z][y][x] == "":
                     pass
                 else:
@@ -139,7 +139,8 @@ def check_right(origin_z, origin_y, origin_x, matrix, target_z, target_y, target
             return ans_string
         else:
             print("main try/catch error, review control flow")
-
+    else:
+        print("end of control flow")
 # counting rows per frame, storing as indices of array
 # in a paginated array of symbols to be comrpessed
 def count_frames(matrix):
