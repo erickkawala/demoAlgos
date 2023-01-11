@@ -7,7 +7,7 @@ import sys
 
 arg = sys.argv
 
-def func(arg):
+def py_pkg_which(arg):
     # try:
     #     syntax_str = "import %s", sys.argv[1]
     #     exec(syntax_str)
@@ -24,7 +24,7 @@ def func(arg):
         cmd2 = "print(%s.__file__)" % (sys.argv[1])
         exec(cmd2)
 
-func(sys.argv[1])
+py_pkg_which(sys.argv[1])
 # can't try catch an import =( so no
 # except SyntaxError: "usage:"
 # when arg is not a python module
