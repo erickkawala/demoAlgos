@@ -85,18 +85,18 @@ var diag2 = [];
             if (k == row.length-1 && t == 0)
             {
               matrix1[t][k] = diag2Rev[t];
-              buffer++;
+              //buffer++;
             }
             else if (k == row.length-1 - t && t > 0)
             {
               matrix1[t][k] = diag2Rev[t];
-              buffer++;
+              //buffer++;
             }
             else {
               continue;
             }
         }
-        buffer++;
+       // buffer++;
     }
     console.log(matrix1);
     return matrix1;
