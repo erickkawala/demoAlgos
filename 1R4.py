@@ -17,17 +17,19 @@ def compress(matrix):
 
                 # n = 1
                 #count matches to the right
-                count_right(o_z, o_x, o_y, matrix, t_z, t_y, t_x, 1)
+                count_right(o_z, o_y, o_x, matrix, t_z, t_y, t_x, 1)
                 
                 
                                 #               
-                n = count_right(o_z, o_x, o_y, matrix, t_z, t_y, t_x, 0)
+                n = count_right(o_z, o_y, o_x, matrix, t_z, t_y, t_x, 0)
                 char = matrix[z][y][x]
                 origin = str(matrix[z][y][x]*n)
+
+
                 matrix2[x][y][z] = right_ans
 
-
-def count_right(o_z, o_x, o_y, matrix, t_z, t_y, t_x, 1):
+#                                                     1
+def count_right1(o_z, o_x, o_y, matrix, t_z, t_y, t_x, n):
     # n = 1
     try target = matrix[o_z][o_y][o_x+n]:
     origin = matrix[t_z][t_y][t_x]
@@ -42,8 +44,10 @@ def count_right(o_z, o_x, o_y, matrix, t_z, t_y, t_x, 1):
         target = matrix[z][y][x+n]
         origin = matrix[z][y][x+n+1]
 
+    # call right_backfill
+
 #                                                     n
-def count_right(o_z, o_x, o_y, matrix, t_z, t_y, t_x, 0):
+def count_right2(o_z, o_x, o_y, matrix, t_z, t_y, t_x, 0):
     if (n == 1):
         try target = matrix[z][y][x+n]:
             origin = matrix[z][y][x]
@@ -84,7 +88,10 @@ def count_right(o_z, o_x, o_y, matrix, t_z, t_y, t_x, 0):
                 origin = matrix[z][y][x+n]
                 return n
         except IndexError:
+            print("n > 1 - index error, here n is match counter")
+            return
             ## handle IndexError when no matches ##
+            ## n is the match counter, so if n!==0, then call right_backfill, @line 54
             right_backfill(t_z, t_y, t_x, o_z, o_y, o_x, n)
         
 
