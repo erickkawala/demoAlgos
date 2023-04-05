@@ -68,7 +68,7 @@ def check_right(origin_z, origin_y, origin_x, matrix, target_z, target_y, target
             print("ans_string: ", ans_string)
             try:
                 check_right(origin_z, origin_y, origin_x, matrix,
-                            target_z, target_y, target_x+1, 0, y_ctr, z_ctr)
+                            target_z, target_y, target_x+1, match_ctr, y_ctr, z_ctr)
 
             # first row index error, increment y_ctr (row) to backfill after no more target==origin
             #                         z_ctr (frame) will help backfill compressed eles to "", see bottom
