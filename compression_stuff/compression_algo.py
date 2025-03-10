@@ -10,6 +10,9 @@ import pprint as pp
 #  ary rows_len [0] represents the number of rows in the first frame
 #  int frames_len represents number of frames to iterate, indices frames_len-1
 
+#probably change the rules of the compression algo per the data set
+#sometimes it makes sense to have it wrap around past last array index, 
+# and also, to use at least 4D arrays or pointers to emulate that behavior
 def check_all(matrix):
 
     for frame in matrix:
