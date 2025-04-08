@@ -1,0 +1,31 @@
+import { test, expect } from '@playwright/test';
+import { scrapeData } from '../index.js';
+
+// let articles = [];
+
+// Fetch articles once before all tests run
+test.beforeAll(async () => {
+    articles = await scrapeData();
+    console.log(`Fetched ${articles.length} articles`);
+});
+
+// Check that the data object is an array
+test('final data object is an array', async () => {
+    expect(Array.isArray(articles)).toBe(true);
+});
+
+// Verify articles are sorted from newest to oldest
+test('sort scraped articles from newest to oldest', async () => {
+    for (let i = 0; i < articles.length - 1; i++) {
+        const currentArticleDate = new Date(articles[i].date);
+        const nextArticleDate = new Date(articles[i + 1].date);
+
+        expect(currentArticleDate.getTime()).toBeGreaterThanOrEqual(nextArticleDate.getTime());
+    }
+});
+
+// Check that the final array has a reasonable length (reduce false failures from rate limits)
+test('final array has expected length', async () => {
+    expect(articles.length).toBeGreaterThanOrEqual(50); // Allow flexibility for rate limits
+    expect(articles.length).toBeLessThanOrEqual(100);   // Ensure we didn't over-fetch
+});
